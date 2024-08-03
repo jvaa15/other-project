@@ -1,8 +1,24 @@
 
 # area for the interface#
 
-#import tkinter as tk
-#from tkinter import messagebox as msg
+import tkinter as tk
+from tkinter import messagebox as msg
+
+class server():
+    def __init__(self, master):
+
+        self.master = master
+        self.master.title("Server")
+        self.master.geometry("200x200")
+        self.master.resizable(0, 0)
+
+        self.title = tk.Label(self.master, text = "App Server", font = "arial")
+        self.title.grid(row = 0, column= 1)
+        
+
+
+
+
 
 
 # functions and "server area"
@@ -34,6 +50,8 @@ def new_entry(key, new_value):
         print(" Key updated successfully! {key} -> {new_value}")
     else:
         print("key {key} not found")
+
+
 
 # and the code from chat gpt#
 
