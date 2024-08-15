@@ -1,8 +1,36 @@
 import tkinter as tk
 from tkinter import messagebox
 
+
+# problems:
+# 1 opening two windows at the same time but these windows are the same
+# 2 ain´t no opening the button of login, sign up.
+# 3 ain´t no opening the main window
+# #
+
+
+class MainWindow:
+    def __init__(self, master):
+        # definitions from the main window
+        self.master = master
+        self.master.title("Main Window")
+        self.master.geometry("350x200")
+        self.master.resizable(0, 0)
+
+        # Interface elements main window
+        self.h1 = tk.Text("hello, welcome to the app!\n what do you wanna do?")
+        self.h1.pack()
+        # Sign up button
+        self.SignUp_button = tk.Button(self.master, text="Sign Up", command=SignUp)
+        self.SignUp_button.grid(row=0, column=1)
+        # login button
+        self.Login_button = tk.Button(self.master, text="Sign Up", command=Login)
+        self.Login_button.grid(row=0, column=1)
+#
+#
 class SignUp:
     def __init__(self, master):
+        # Interface elements sign up
         self.master = master
         self.master.title("Sign Up Window")
         self.master.geometry("350x200")
@@ -11,7 +39,7 @@ class SignUp:
         # Dictionary to store the variables from the sign up
         self.user_data = {}
 
-        # Interface elements
+        # Interface elements sign up
         self.label_title = tk.Label(self.master, text='Sign Up', font='arial')
         self.label_title.grid(row=0, column=1)
 
@@ -30,7 +58,7 @@ class SignUp:
         self.button_sign_up = tk.Button(self.master, text='Sign Up', command=self.store_user_data)
         self.button_sign_up.grid(row=3, column=1)
 
-    # Functions
+    # Functions from sign up
     def store_user_data(self):
         username = self.entry_username.get()
         password = self.entry_password.get()
@@ -43,24 +71,19 @@ class SignUp:
             messagebox.showinfo("Success", "User registered successfully!")
         else:
             messagebox.showwarning("Input Error", "Please enter both username and password")
-        
-    def button_for_login():
-        pass
-    
-    def create_new_server(self):
-        pass
-        
-        
+#      
+#       
 class Login:
-    def __init__(self, master, sign_up_instance):
+    def __init__(self, master):
+        # Interface elements Login
         self.master = master
         self.master.title("Login Window")
         self.master.geometry("350x200")
         self.master.resizable(0, 0)
 
-        self.sign_up_instance = sign_up_instance
+        #self.sign_up_instance = sign_up_instance
         
-        # Interface elements
+        # Interface elements from the login
         self.label_title = tk.Label(self.master, text='Login', fg='blue', font='arial')
         self.label_title.grid(row=0, column=1)
         
@@ -82,7 +105,7 @@ class Login:
         self.button_close = tk.Button(self.master, text='Close', command=self.close_app)
         self.button_close.grid(column=0, row=4)
      
-    # Functions
+    # Functions from the login
     def close_app(self):
         self.master.destroy()
 
@@ -94,17 +117,22 @@ class Login:
             messagebox.showinfo("Success", "Login successful!")
         else:
             messagebox.showerror("Error", "Invalid username or password")
-
+#
+#
 if __name__ == '__main__':
+
+    #runing the code{
+    
+    root_MainWindow = tk.Tk()
+
+    # enter in login or in the sign up
+    # if or something like that!
+
     root_sign_up = tk.Tk()
     root_login = tk.Tk()
     
     sign_up_instance = SignUp(root_sign_up)
     login_instance = Login(root_login, sign_up_instance)
-    
     root_sign_up.mainloop()
 
-
-
-
-
+    #{
