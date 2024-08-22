@@ -3,11 +3,11 @@ from tkinter import messagebox
 
 
 # problems:
-# 1 opening two windows at the same time but these windows are the same
 # 2 ain´t no opening the button of login, sign up.
-# 3 ain´t no opening the main window
 # #
 
+
+ctrl = 0
 
 class MainWindow:
     def __init__(self, master):
@@ -26,8 +26,14 @@ class MainWindow:
         # login button
         self.Login_button = tk.Button(self.master, text="Sign Up", command=Login)
         self.Login_button.grid(row=0, column=1)
-#
-#
+
+        if ctrl == 1:
+            btn_change()
+            
+def btn_change():
+    global ctrl
+    ctrl += 1
+
 class SignUp:
     def __init__(self, master):
         # Interface elements sign up
@@ -120,19 +126,14 @@ class Login:
 #
 #
 if __name__ == '__main__':
-
-    #runing the code{
     
     root_MainWindow = tk.Tk()
+    root_MainWindow.mainloop()
 
-    # enter in login or in the sign up
-    # if or something like that!
-
-    root_sign_up = tk.Tk()
-    root_login = tk.Tk()
-    
-    sign_up_instance = SignUp(root_sign_up)
-    login_instance = Login(root_login, sign_up_instance)
-    root_sign_up.mainloop()
-
-    #{
+    if ctrl == 1:
+        root_sign_up = tk.Tk()
+        root_login = tk.Tk()
+        
+        sign_up_instance = SignUp(root_sign_up)
+        login_instance = Login(root_login, sign_up_instance)
+        root_sign_up.mainloop()
